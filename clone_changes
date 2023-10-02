@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ChatGPT Clone</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        #chat-container {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0px 0px 5px #aaa;
+        }
+
+        #chat-messages {
+            height: 300px;
+            overflow-y: scroll;
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        #user-input {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div id="chat-container">
+        <h2>ChatGPT Clone</h2>
+        <div id="chat-messages"></div>
+        <input type="text" id="user-input" placeholder="Type your message">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <script>
+        const chatMessages = document.getElementById("chat-messages");
+        const userInput = document.getElementById("user-input");
+
+        function sendMessage() {
+            const userMessage = userInput.value.trim();
+            if (userMessage === "") return;
+
+            // Display user message
+            displayMessage(userMessage, "user");
+
+            // Simulate a response (in a real implementation, this would be handled by a backend or AI)
+            const response = "This is a sample response from the chatbot.";
+            displayMessage(response, "bot");
+
+            // Clear user input
+            userInput.value = "";
+        }
+
+        function displayMessage(message, sender) {
+            const messageElement = document.createElement("div");
+            messageElement.classList.add(sender === "user" ? "user-message" : "bot-message");
+            messageElement.innerText = message;
+            chatMessages.appendChild(messageElement);
+        }
+    </script>
+</body>
+</html>
